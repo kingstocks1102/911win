@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+09:59:58	16382/16382	---MCZ	403	error ('Forbidden')	text/html	date:Sun,%2026%20Jun%202022%2001:59:57%20GMT	https://www.hps395e.com/app/home2	C:/My%20Web%20Sites/hps395e/www.hps395e.com/app/home2.0.delayed	(from )
+09:59:58	5768/5768	---MCZ	403	error ('Forbidden')	text/html	date:Sun,%2026%20Jun%202022%2001:59:58%20GMT	https://www.hps395e.com/robots.txt		(from )

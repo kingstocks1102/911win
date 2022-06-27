@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from 911win.co/download.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 Jun 2022 02:03:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8" />
+  <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="../jqmdesigner.appspot.com/gk/lib/jquery.mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css" />
+  <script src="../ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78698726-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','../connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '630525477088161');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=630525477088161&amp;ev=PageView&amp;noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+
+  <script>
+  	function scale( width, height, padding, border ) {
+		var scrWidth = $( window ).width() - 30,
+			scrHeight = $( window ).height() - 30,
+			ifrPadding = 2 * padding,
+			ifrBorder = 2 * border,
+			ifrWidth = width + ifrPadding + ifrBorder,
+			ifrHeight = height + ifrPadding + ifrBorder,
+			h, w;
+	
+		if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
+			w = ifrWidth;
+			h = ifrHeight;
+		} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
+			w = scrWidth;
+			h = ( scrWidth / ifrWidth ) * ifrHeight;
+		} else {
+			h = scrHeight;
+			w = ( scrHeight / ifrHeight ) * ifrWidth;
+		}
+	
+		return {
+			'width': w - ( ifrPadding + ifrBorder ),
+			'height': h - ( ifrPadding + ifrBorder )
+		};
+	};
+    function checkOS() {
+		if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+			$('#OS').val('iOS');
+			$('#ios').show();
+			$('#how-ios').show();
+		} else if (/(Android)/i.test(navigator.userAgent)) {
+			$('#OS').val('Android');
+			$('#google').show();
+			$('#how-android').show();
+		} else {
+			window.location.href ="download-2.html";
+		}
+		/*$('#OS').val('iOS');
+		$('#ios').show();
+		$('#how-ios').show();*/
+	}
+	$(document).ready(function(e) {
+		$('#google').hide();
+		$('#ios').hide();
+		$('#how-android').hide();
+		$('#how-ios').hide();
+		$('#aaa').hide();
+        checkOS();
+		//$('#popupMap').css('overflow-y', 'scroll');  
+    });
+	
+	function doit() {
+		$('#aaa').show();
+		var url = "https://www.9191.com.tw/d/1.4.0/91.plist?" + Math.random();
+        window.location = "itms-services://?action=download-manifest&url=" + url;
+		setTimeout(out,10000);
+	}
+	
+	function out() {
+		$('#aaa').hide();
+	}
+	
+	$( document ).on( "pageinit", function() {
+		$( "#popupMap iframe" )
+			.attr( "width", 0 )
+			.attr( "height", 0 );
+			  
+		$( "#popupMap iframe" ).contents().find( "#map_canvas" )
+			.css( { "width" : 0, "height" : 0 } );
+				 
+		$( "#popupMap" ).on({
+			popupbeforeposition: function() {
+				var size = scale( 480, 320, 0, 1 ),
+					w = size.width,
+					h = size.height;
+	
+				$( "#popupMap iframe" )
+					.attr( "width", w )
+					.attr( "height", h );
+						 
+				$( "#popupMap iframe" ).contents().find( "#map_canvas" )
+					.css( { "width": w, "height" : h } );
+				
+				$("body").on("touchmove", false);
+         		$('body').css('overflow','hidden');
+			},
+			popupafterclose: function() {
+				$( "#popupMap iframe" )
+					.attr( "width", 0 )
+					.attr( "height", 0 );
+						 
+				$( "#popupMap iframe" ).contents().find( "#map_canvas" )
+					.css( { "width": 0, "height" : 0 } );
+				
+				$("body").unbind("touchmove");
+         		$('body').css('overflow','auto');
+			}
+		});
+	});
+	
+	$('#popupMap iframe').wrap(function() {
+		var $this = $(this);
+		return $('<div />').css({
+		width: $this.attr('width'),
+		height: $this.attr('height'),
+		overflow: 'auto',
+		'-webkit-overflow-scrolling': 'touch'
+		});
+	});
+	
+    $(document).on("mobileinit", function () {
+      $.mobile.autoInitializePage = false;
+      $.mobile.hashListeningEnabled = false;
+    });
+
+    function mobileInitPage() {
+      $.mobile.hashListeningEnabled = true;
+      $.mobile.initializePage();
+    };
+	
+	// popup examples
+	$( document ).on( "pagecreate", function() {
+		// The window width and height are decreased by 30 to take the tolerance of 15 pixels at each side into account
+		function scale( width, height, padding, border ) {
+			var scrWidth = $( window ).width() - 30,
+				scrHeight = $( window ).height() - 30,
+				ifrPadding = 2 * padding,
+				ifrBorder = 2 * border,
+				ifrWidth = width + ifrPadding + ifrBorder,
+				ifrHeight = height + ifrPadding + ifrBorder,
+				h, w;
+			if ( ifrWidth < scrWidth && ifrHeight < scrHeight ) {
+				w = ifrWidth;
+				h = ifrHeight;
+			} else if ( ( ifrWidth / scrWidth ) > ( ifrHeight / scrHeight ) ) {
+				w = scrWidth;
+				h = ( scrWidth / ifrWidth ) * ifrHeight;
+			} else {
+				h = scrHeight;
+				w = ( scrHeight / ifrHeight ) * ifrWidth;
+			}
+			return {
+				'width': w - ( ifrPadding + ifrBorder ),
+				'height': h - ( ifrPadding + ifrBorder )
+			};
+		};
+		$( ".ui-popup iframe" )
+			.attr( "width", 0 )
+			.attr( "height", "auto" );
+		$( "#popupVideo" ).on({
+			popupbeforeposition: function() {
+				// call our custom function scale() to get the width and height
+				var size = scale( 497, 560, 15, 1 ),
+					w = size.width,
+					h = size.height;
+				$( "#popupVideo iframe" )
+					.attr( "width", w )
+					.attr( "height", h );
+			},
+			popupafterclose: function() {
+				$( "#popupVideo iframe" )
+					.attr( "width", 0 )
+					.attr( "height", 0 );
+			}
+		});
+	});
+	
+	function closeIframe()
+	{
+		$('#popupVideo').dialog('close');
+		return false;
+	}
+  </script>
+  <script src="../code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <!-- Uncomment the following to include cordova in your android project -->
+  <!--<script src="https://jqmdesigner.appspot.com/platforms/android/cordova.js"></script>-->
+  <!-- GK Loader use RequireJS to load module -->
+  <script src="../requirejs.org/docs/release/2.1.11/minified/require.js"></script>
+  <!--Plug in GK-->
+  <script src="../jqmdesigner.appspot.com/components/jquery.gk/jquery.gk.min.js"></script>
+  <!-- Load GK components -->
+  <script components="https://jqmdesigner.appspot.com/components/gk-ext/image.html" callback="mobileInitPage" src="../jqmdesigner.appspot.com/components/gk-loader/gk-loader.js"></script>
+  <title>91遊戲下載</title>
+</head>
+
+<style>
+iframe {
+    border: none;
+	overflow:hidden;
+}
+.ui-content {
+    border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+    padding: 0;
+}
+.ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    background-color: #1B1846;
+    border-color: #bbb;
+    color: #DBDBDB;
+	text-shadow: 0 0px 0 #f3f3f3;
+	text-align:center;
+	font-size: 10pt;
+}
+#google {
+	
+	margin-top: 1em;
+	margin-bottom: .5em;
+    padding: .5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+	
+	width: 90%;
+	
+
+}
+#ios {
+	
+	margin-top: 1em;
+	margin-bottom: .5em;
+    padding: .5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+	width: 90%;
+	
+
+}
+#how {
+	background-color: #8e8e93;
+    border-color: #ddd;
+    color: #ffffff;
+    text-shadow: 0 1px 0 #f3f3f3;
+	font-size: 24px;
+	margin-bottom: .5em;
+    padding: .5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+	border: 3px solid #DCDCDC;
+	width: 70%;
+	border-radius: 10px;
+
+}
+.bg {
+	background-image: url(images/mobile-d2.png);
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+	border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+    padding: 0;
+}
+.line {
+	    margin: 8em 0.5em 0.5em 0;
+		float: right;
+		
+}
+h1 {
+	margin: 0 0 10px 0;
+    font-size: 40px;
+	font-weight: 300;
+	color: #FFFFFF;
+	
+}
+
+h8 {
+	display: block;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+	margin: 10px 2px;
+    font-size: 60px;
+	color: #FFFFFF;
+	width: 100%;
+}
+.ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn.ui-btn-a:hover, .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
+    background-color: #8e8e93;
+    border-color: #ddd;
+    color: #ffffff;
+    text-shadow: 0 1px 0 #f3f3f3;
+	font-size: 14px;
+	margin-bottom: .5em;
+    padding: .5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+	border: 3px solid #DCDCDC;
+	width: 60%;
+	border-radius: 10px;
+}
+.bbbbbb {
+	background-color: transparent;
+    border-color: transparent;
+    color: #ffffff;
+    text-shadow: 0 1px 0 #f3f3f3;
+	font-size: 14px;
+	margin-bottom: .5em;
+    padding: .5em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+	border: 0;
+	width: 60%;
+	border-radius: 10px;
+}
+	
+
+</style>
+
+
+<body gk-app>
+<input type="hidden" id="OS" value="">
+  <!-- Page: home  -->
+  <div id="home" data-role="page">
+    <div role="main" class="ui-content">
+    <div class="bg">
+    <h8><img src="images/back-mobile.png" width="100%" alt=""/></h8>
+     <h1>與您線上約會</h1>
+      </div>
+      <div align="center"> <!--<a class="ui-btn" id="how" href="#popupMap" data-rel="popup" data-position-to="window" data-role="button" data-theme="b" data-inline="true">-->
+      <a class="ui-btn" id="how-android" href="how.html" target="_blank">
+      <img src="images/tools-icon.png" width="25" height="25" alt=""/>&nbsp;<span style="font-weight: 100">安裝說明</span></a>
+      <a class="ui-btn" id="how-ios" href="ios-setup.html" target="_blank">
+      <img src="images/tools-icon.png" width="25" height="25" alt=""/>&nbsp;<span style="font-weight: 100">安裝啟動說明 <font color="#FF0000">(安裝後，請務必閱讀)</font></span></a>
+      <a id="google" href="http://www.9191.com.tw/d/androiddown.php" target="_blank" class="bbbbbb"><img src="images/android-bottom.png" width="250" height="71" alt=""/></a>
+      <a id="ios" href="javascript:doit()" class="bbbbbb"><img src="images/ios-bottom.png" width="250" height="71" alt=""/></a>
+      <span id="aaa">正在安裝，請回手機桌面查看</span>
+      <div data-role="popup" id="popupVideo" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+        <iframe src="line.html" width="497" height="298" seamless></iframe>
+      </div>
+     
+      <div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+         
+        <iframe src="how.html" width="480" height="320" seamless></iframe>
+         
+    </div>
+      </div>
+    </div> 
+ 
+    客服時間：9~24點 假日六小時內回覆<br>
+    Copyright© 91德州線上娛樂, Inc. All Rights Reserved.</div>
+</body>
+
+
+<!-- Mirrored from 911win.co/download.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 26 Jun 2022 02:06:12 GMT -->
+</html>

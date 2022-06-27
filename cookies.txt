@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+911win.co	TRUE	/	FALSE	1999999999	PHPSESSID	nvi6j0sbaldarlfqjaahts5tn3
+911win.co	TRUE	/	FALSE	1999999999	alertCookie	1
+911win.co	TRUE	/	FALSE	1999999999	hg_cookie_lang	viet
+

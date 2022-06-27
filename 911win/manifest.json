@@ -1,0 +1,20 @@
+{
+"short_name": "911WIN",
+"name": "911WIN",
+"icons": [
+{
+"src":"images/ch/icon192.png",
+"type": "image/png",
+"sizes": "192x192"
+},
+{
+"src":"images/ch/icon512.png",
+"type": "image/png",
+"sizes": "512x512"
+}
+],
+"start_url": "./?utm_source=web_app_manifest",
+"background_color": "#000",
+"theme_color": "#536878",
+"display": "standalone"
+}
